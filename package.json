@@ -1,0 +1,31 @@
+{
+  "name": "happy-cli",
+  "version": "1.0.0",
+  "description": "command cli to create frontend project",
+  "main": "index.js",
+  "bin": {
+    "happy-cli": "./bin/cli.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hermes-Axe/happy-cli.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Hermes-Axe/happy-cli/issues"
+  },
+  "homepage": "https://github.com/Hermes-Axe/happy-cli#readme",
+  "dependencies": {
+    "ora": "^9.3.0"
+  },
+  "devDependencies": {
+    "commitizen": "^4.3.1",
+    "cz-conventional-changelog": "^3.3.0"
+  }
+}
