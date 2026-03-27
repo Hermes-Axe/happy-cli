@@ -7,6 +7,7 @@
     "happy-cli": "./bin/cli.js"
   },
   "scripts": {
+    "commit": "git-cz",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -22,7 +23,12 @@
   },
   "homepage": "https://github.com/Hermes-Axe/happy-cli#readme",
   "dependencies": {
-    "ora": "^9.3.0"
+    "chalk": "^3.0.0",
+    "dotenv": "^17.3.1",
+    "download-git-repo": "^3.0.2",
+    "figlet": "^1.11.0",
+    "ora": "^9.3.0",
+    "prompts": "^2.4.2"
   },
   "devDependencies": {
     "commitizen": "^4.3.1",
