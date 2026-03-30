@@ -11,6 +11,9 @@ const ora = require('ora');
 const cwd = process.cwd();
 const download = require('download-git-repo');
 
+const downloadPlatform = process.env.DOWNLOAD_PLATFORM
+const downloadUrl = process.env.DOWNLOAD_URL
+
 const { frameworkVersions, dependencies } = require('../config/dep');
 
 const resolve = (...paths) => path.resolve(cwd, ...paths)
@@ -28,9 +31,9 @@ function getDependencies(framework, version) {
  * @returns {Promise<boolean>}
  */
 function downloadFromGit(targetDir) {
-    const getDownloadUrl = () => `${process.env.DOWNLOAD_PLATFORM}:${process.env.DOWNLOAD_URL}`
+    const realDownloadUrl = `${downloadPlatform}:${downloadUrl}`
     return new Promise((resolve, reject) => {
-        download(getDownloadUrl(), targetDir, function (err) {
+        download(realDownloadUrl, targetDir, function (err) {
             if (err) {
                 reject(err);
                 return;
@@ -63,7 +66,7 @@ function getFrameworkVersions(framework) {
  * @returns {boolean}
  */
 function isValid(name) {
-    return /^[a-zA-Z]+-?[a-zA-Z0-9]+$/.test(name);
+    return !!name && /^[a-zA-Z]+-?[a-zA-Z0-9]+$/.test(name);
 }
 
 function isExists(name) {
@@ -134,4 +137,10 @@ function showFiglet(msg) {
         }
     ])
     console.log(answers);
+    const spinner = ora('Downloading...').start();
+    downloadFromGit(resolve(answers.projectName)).then(() => {
+        spinner.succeed('Success');
+    }).catch(err => {
+        spinner.fail(err.message);
+    })
 })()
