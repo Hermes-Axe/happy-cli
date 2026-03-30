@@ -32,12 +32,14 @@ const vueDependencies = [
     {
         title: 'Vuex',
         value: 'vuex',
-        peerVersion: ['2.0', '3.0']
+        peerVersion: ['2.0', '3.0'],
+        selected: version => version === '2.0'
     },
     {
         title: 'Pinia',
         value: 'pinia',
-        peerVersion: ['3.0']
+        peerVersion: ['3.0'],
+        selected: version => version === '3.0'
     },
     {
         title: 'Axios',
@@ -48,12 +50,14 @@ const vueDependencies = [
     {
         title: 'Element UI',
         value: 'element-ui',
-        peerVersion: ['2.0']
+        peerVersion: ['2.0'],
+        selected: version => version === '2.0'
     },
     {
         title: 'Element Plus',
         value: 'element-plus',
-        peerVersion: ['3.0']
+        peerVersion: ['3.0'],
+        selected: version => version === '3.0'
     }
 ]
 

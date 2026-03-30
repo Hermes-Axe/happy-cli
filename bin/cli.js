@@ -22,7 +22,11 @@ function getDependencies(framework, version) {
     framework = String(framework);
     version = String(version);
     const dep = dependencies[framework] || [];
-    return dep.filter(item => item.peerVersion.includes(version));
+    return dep.filter(item => item.peerVersion.includes(version)).map(item => ({
+        title: item.title,
+        value: item.value,
+        selected: typeof item.selected === 'function' ? item.selected(version) : item.selected
+    }));
 }
 
 /**
